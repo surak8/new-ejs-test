@@ -1,0 +1,5 @@
+node_modules
+yarn.lock
+mylogger.log
+result.htm
+sonic-boom.log
