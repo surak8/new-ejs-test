@@ -18,6 +18,7 @@
 	},
 	"scripts": {
 		"start": "node src/index.js",
+		"doc": "jsdoc src",
 		"clean": "yarn clean:0&&yarn clean:1&&yarn clean:2&&yarn clean:3",
 		"clean:0": "IF EXIST node_modules RD/Q/S node_modules",
 		"clean:1": "IF EXIST package-lock.json DEL /Q package-lock.json",

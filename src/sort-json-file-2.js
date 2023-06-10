@@ -4,6 +4,12 @@ const path=require("path");
 const json5=require("json5");
 const DEBUG_PROP_NAME="debug";
 
+/**
+ * Sort fields in a JSON file.
+ * @class
+ * @property {Array} args - processing arguments
+ * @property {boolean} debug - is debugging enabled.
+ */
 const jsonFileSorter={
 	/**
 	 * Calculate the name of a backup file.
@@ -103,6 +109,10 @@ const jsonFileSorter={
 		this.parseOpts(opts);
 		return this;
 	},
+	/**
+	 * Extract processing arguments.
+	 * @param {object} opts processing options
+	 */
 	parseOpts:function(opts){
 		var propValue,propType;
 
@@ -124,6 +134,12 @@ const jsonFileSorter={
 		if (this.debug) console.log(`${this.parseOpts.name}`);
 
 	},
+	/**
+	 * Determine whether the give object contains a specific property.
+	 * @param {Object} anObj an object to search
+	 * @param {string} propertyName name of the property to find
+	 * @returns a <b>boolean</b> value of <b><i>true</i></b> if the property is found, <b><i>false</i></b> otherwise.
+	 */
 	hasPropertyNamed:function(anObj,propertyName){
 		if (this.debug) console.log(`${this.hasPropertyNamed.name}`);
 		if (anObj&&propertyName)
@@ -131,11 +147,15 @@ const jsonFileSorter={
 		return false;
 	},
 
+	/**
+	 * what does this do?
+	 * @returns not sure.
+	 */
+
 	doit:function(){
-		var tmp,opts,propType,propValue;
+		var opts,propType,propValue;
 
 		if (this.debug) console.log(`${this.doit.name}`);
-		//tmp=this.args[]
 		if (this.hasPropertyNamed(this.args,DEBUG_PROP_NAME)) {
 			// convert it to boolean, if required
 			propValue=opts[DEBUG_PROP_NAME];
@@ -153,6 +173,11 @@ const jsonFileSorter={
 		console.debug(`${DEBUG_PROP_NAME}=${this[DEBUG_PROP_NAME]}`);
 		return this;
 	},
+
+	/**
+	 * Iterate through <b>args</b> and rewrite any JSON files.
+	 * @returns this
+	 */
 	sortFiles:function(){
 		var objType;
 
@@ -167,7 +192,16 @@ const jsonFileSorter={
 			console.log("args==null");
 		return this;
 	},
+
+	/**
+	 * Processing arguments
+	 * @property {Array} collection of processing arguments.
+	 */
 	get args(){return this._args;},
+	/**
+	 * Enabled debugging.
+	 * @property {boolean} is debugging enabled.
+	 */
 	get debug(){return this._debug;}
 };
 
