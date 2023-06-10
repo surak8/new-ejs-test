@@ -1,5 +1,8 @@
-node_modules
-yarn.lock
 mylogger.log
+node_modules
+out
 result.htm
 sonic-boom.log
+yarn.lock
+.vscode/settings.save.json
+test1.save.json

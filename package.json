@@ -6,12 +6,15 @@
 	"dependencies": {
 		"ejs": "^3.1.9",
 		"fs": "^0.0.1-security",
+		"global": "^4.4.0",
+		"jsdoc": "^4.0.2",
 		"path": "^0.12.7",
 		"pino": "6.10.0",
 		"riktest": "^0.0.19"
 	},
 	"devDependencies": {
-		"eslint": "^8.42.0aa"
+		"eslint": "^8.42.0aa",
+		"json5": "^2.2.3"
 	},
 	"scripts": {
 		"start": "node src/index.js",

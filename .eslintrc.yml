@@ -38,3 +38,8 @@ rules:
     - error
     - 1tbs
     - allowSingleLine: true
+  no-mixed-spaces-and-tabs:
+    - error
+    - smart-tabs
+  no-prototype-builtins:
+    - warn

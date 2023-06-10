@@ -2,5 +2,6 @@
 	"debug.javascript.codelens.npmScripts": "never",
 	"merge-conflict.codeLens.enabled": false,
 	"editor.insertSpaces": false,
-	"editor.detectIndentation": false
+	"editor.detectIndentation": false,
+	"editor.renderWhitespace": "none",
 }
