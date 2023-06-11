@@ -2,9 +2,14 @@ const path=require("path");
 const fs=require("fs");
 const json5=require("json5");
 
-const DEBUG_PROP_NAME="debug";
+const {DEBUG_PROP_NAME,SAVE_EXTENSION}=require("./");
+//const
+
+//const DEBUG_PROP_NAME="debug";
+//const BACKUP_EXTENSION="debug";
 
 class BackupUtil{
+	//static get backupExtension(){return BACKUP_EXTENSION;}
 	constructor(opts={}){
 		var propValue,propType;
 
@@ -33,7 +38,7 @@ class BackupUtil{
 			ext=path.extname(filename);
 			return path.join(
 				path.dirname(filename),
-				path.basename(filename,ext)+".save"+ext );
+				path.basename(filename,ext)+SAVE_EXTENSION+ext );
 		}
 	}
 

@@ -51,7 +51,7 @@ function testDateAdd(alogger,numberOfDaysToAdd){
 
 	var result = someDate.setDate(someDate.getDate() + numberOfDaysToAdd);
 
-	if (alogger)		console.log("zzz");
+	if (alogger) console.log("zzz");
 	console.log(new Date(result));
 }
 
@@ -123,8 +123,8 @@ function testTemplate(){
 	var template;
 
 	template=makeFilename(path.join(process.cwd(),"templates"),"test.ejs");
-	if (fs.existsSync(template))		doTransform();
-	else		console.warn("non-existent template: "+template);
+	if (fs.existsSync(template)) doTransform();
+	else console.warn("non-existent template: "+template);
 }
 // #endregion local functions
 
