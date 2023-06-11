@@ -59,7 +59,7 @@ const JSONFileSorter={
 	createObjectWithSortedProperties:function(anObj){
 		var newObj,keys;
 
-		if (this.debug) console.log(`${this.createObjectWithSortedProperties.name}`);
+		if (this.verbose) console.log(`${this.createObjectWithSortedProperties.name}`);
 		if (!anObj) return {};
 		newObj={};
 		keys=Object.keys(anObj).sort();
@@ -74,9 +74,9 @@ const JSONFileSorter={
 * @returns a <b>boolean</b> value of <b><i>true</i></b> if the property is found, <b><i>false</i></b> otherwise.
 */
 	hasPropertyNamed:function(anObj,propertyName){
-		if (this.debug) console.log(`${this.hasPropertyNamed.name}`);
+		if (this.verbose) console.log(`${this.hasPropertyNamed.name}`);
 		if (anObj&&propertyName)
-			return Object.keys(anObj).filter((propertyName)=>propertyName==="debug").length>0;
+			return Object.keys(anObj).filter((objPropertyName)=>objPropertyName===propertyName).length>0;
 		return false;
 	},
 	/**
@@ -100,8 +100,19 @@ const JSONFileSorter={
 		this.setBoolProperty(opts,DEBUG_PROP_NAME);
 		this.setBoolProperty(opts,VERBOSE_PROP_NAME);
 
-		if (this.debug) console.log(`${this.parseOpts.name}`);
+		if (this.verbose) console.log(`${this.parseOpts.name}`);
 
+	},
+	/**
+ * Rewrite file-collection.
+ * @param {string} or {Array} fileList filename, or vector of files to rewrite.
+ * @returns this.
+ */
+	rewriteJSONFiles:function(fileList){
+		if (this.verbose) console.log(`${this.rewriteJSONFiles.name}`);
+		if (fileList&&typeof(fileList)==="object"&&Array.isArray(fileList))
+			fileList.forEach((afile)=>this.rewriteJSONObjectByPropertyName(afile));
+		return this;
 	},
 	/**
  * Open a JSON file, sort it's properties, and write it back to disk.
@@ -110,7 +121,7 @@ const JSONFileSorter={
 	rewriteJSONObjectByPropertyName:function(afile){
 		var anObj,newObj,output,fopts={encoding:"utf-8"},content;
 
-		if (this.debug) console.log(`${this.rewriteJSONObjectByPropertyName.name}`);
+		if (this.verbose) console.log(`${this.rewriteJSONObjectByPropertyName.name}`);
 		if (afile&&fs.existsSync(afile)){
 			this.backupFile(afile);
 			content=fs.readFileSync(afile,fopts);
@@ -123,17 +134,6 @@ const JSONFileSorter={
 			}else
 				console.log(`empty file: ${path.resolve(afile)}`);
 		}
-	},
-	/**
- * Rewrite file-collection.
- * @param {string} or {Array} fileList filename, or vector of files to rewrite.
- * @returns this.
- */
-	rewriteJSONFiles:function(fileList){
-		if (this.debug) console.log(`${this.rewriteJSONFiles.name}`);
-		if (fileList&&typeof(fileList)==="object"&&Array.isArray(fileList))
-			fileList.forEach((afile)=>this.rewriteJSONObjectByPropertyName(afile));
-		return this;
 	},
 	setBoolProperty:function(opts,propertyName){
 		var propValue,propType,needAdd=true;
@@ -164,7 +164,7 @@ const JSONFileSorter={
 	sortFiles:function(){
 		var objType;
 
-		if (this.debug) console.log(`${this.sortFiles.name}`);
+		if (this.verbose) console.log(`${this.sortFiles.name}`);
 		if (this.args)
 			if ((objType=typeof(this.args))==="object")
 				if (Array.isArray(this.args)) this.rewriteJSONFiles(this.args);

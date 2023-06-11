@@ -22,9 +22,9 @@ const JSONFileFinder={
 * @property {Array} args - some args-2
 */
 	get jsonFilesOrPaths(){return this._filesOrPaths;},
-// #endregion properties
+	// #endregion properties
 
-// #region functions
+	// #region functions
 
 	/**
 	* Find all JSON files in specified in init() or

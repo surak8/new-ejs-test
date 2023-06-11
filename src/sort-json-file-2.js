@@ -8,8 +8,15 @@ const {JSONFileSorter}=require("./jsonFileSorter");
  * properties sorted alphabetically.
  * @author rik cousens <rcousens@colt.com>
  */
-function main(){
-// eslint-disable-next-line no-unused-vars
+function main(opts={}){
+
+	var localOpts;
+
+	if (opts)
+		localOpts=opts;
+
+	//if (Object.has)
+	// eslint-disable-next-line no-unused-vars
 	var tmp0=JSONFileFinder
 		.init(process.argv.slice(2));
 	var files=tmp0.findFiles();
@@ -23,7 +30,7 @@ function main(){
 }
 
 try {
-	main();
+	main({debug:true,verbose:true});
 }catch(anException){
 	console.error(anException);
 }

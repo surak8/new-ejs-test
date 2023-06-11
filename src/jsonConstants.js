@@ -3,7 +3,6 @@
 * @author rik cousens <rcousens@colt.com>
  */
 
-
 // #region properties
 /**
  * description of DEBUG_PROP_NAME.
