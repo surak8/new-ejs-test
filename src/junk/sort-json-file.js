@@ -1,40 +1,40 @@
-const fs=require("fs");
-const path=require("path");
-const json5=require("json5");
+const fs = require("fs");
+//const path = require("path");
+const json5 = require("json5");
 
-function sortedProperties(anObj){
-	var newObj,keys;
+function sortedProperties(anObj) {
+	var newObj, keys;
 
 	if (!anObj) return {};
-	newObj={};
-	keys=Object.keys(anObj).sort();
-	keys.forEach((akey)=>newObj[akey]=anObj[akey]);
+	newObj = {};
+	keys = Object.keys(anObj).sort();
+	keys.forEach((akey) => newObj[akey] = anObj[akey]);
 	return newObj;
 }
 
-function sortFile(afile){
-	var anObj,fopts={encoding:"utf-8"},output,newObj;
+function sortFile(afile) {
+	var anObj, fopts = { encoding: "utf-8" }, output, newObj;
 
-	if (afile&&fs.existsSync(afile)){
-		anObj=json5.parse(fs.readFileSync(afile,fopts));
-		newObj=sortedProperties(anObj);
-		output=json5.stringify(newObj, {space:"\t",quote:"\""});
+	if (afile && fs.existsSync(afile)) {
+		anObj = json5.parse(fs.readFileSync(afile, fopts));
+		newObj = sortedProperties(anObj);
+		output = json5.stringify(newObj, { space: "\t", quote: "\"" });
 		console.log(`result=${output}`);
 	}
 }
 
-function sortFiles(files){
+function sortFiles(files) {
 	var filesToProcess;
 
-	if (files){
-		if (typeof(files)==="string")
-			filesToProcess=[files];
-		else if (typeof(files)==="object"){
+	if (files) {
+		if (typeof (files) === "string")
+			filesToProcess = [files];
+		else if (typeof (files) === "object") {
 			if (Array.isArray(files))
-				filesToProcess=files;
+				filesToProcess = files;
 		}
 		if (filesToProcess)
-			filesToProcess.forEach((afile)=>sortFile(afile));
+			filesToProcess.forEach((afile) => sortFile(afile));
 		else
 			console.warn("file-vector is empty");
 	} else
@@ -43,5 +43,5 @@ function sortFiles(files){
 }
 
 //sortFiles();
-sortFiles(["test1.json",".vscode/settings.json"]);
+sortFiles(["test1.json", ".vscode/settings.json"]);
 //sortFile(path.resolve(path.join(process.cwd(),"test1.json")));

@@ -1,9 +1,9 @@
 "use strict";
 
 // #region required packages
-const fs=require("fs");
-const path=require("path");
-const {SAVE_EXTENSION, EXTENSION} =require("./jsonConstants");
+const fs = require("fs");
+const path = require("path");
+const { SAVE_EXTENSION, EXTENSION } = require("./jsonConstants");
 // #endregion required packages
 
 /**
@@ -16,12 +16,12 @@ const {SAVE_EXTENSION, EXTENSION} =require("./jsonConstants");
 * @class
 * @property {Array} args - some args
 */
-const JSONFileFinder={
-// #region properties
+const JSONFileFinder = {
+	// #region properties
 	/**
 * @property {Array} args - some args-2
 */
-	get jsonFilesOrPaths(){return this._filesOrPaths;},
+	get jsonFilesOrPaths() { return this._filesOrPaths; },
 	// #endregion properties
 
 	// #region functions
@@ -31,18 +31,22 @@ const JSONFileFinder={
 	* recursively found in folders, if any were specified.
 	* @returns an {Array} of JSON files, if any
 	*/
-	findFiles:function(){
-		var astat,thisFile, ret=[],myArgs=this.jsonFilesOrPaths;
+	findFiles: function () {
+		var astat, thisFile, ret = [], myArgs = this.jsonFilesOrPaths;
 
 		if (myArgs)
-			if (typeof(myArgs)==="object"&&Array.isArray(myArgs)){
+			if (typeof (myArgs) === "object" && Array.isArray(myArgs)) {
 				// examine each arg for file vs directory.
-				myArgs.forEach((anArg)=>{
-					astat=fs.statSync(thisFile=path.resolve(anArg));
-					if (astat.isFile())
-						ret.push(thisFile);
-					else if (astat.isDirectory())
-						ret.push(...this.readDirContents(thisFile));
+				myArgs.forEach((anArg) => {
+
+					if (fs.existsSync(thisFile = path.resolve(anArg))) {
+						astat = fs.statSync(thisFile);
+						if (astat.isFile())
+							ret.push(thisFile);
+						else if (astat.isDirectory())
+							ret.push(...this.readDirContents(thisFile));
+					} else
+						console.warn(`non-existent: ${thisFile}`);
 				});
 			}
 		return ret;
@@ -54,12 +58,12 @@ const JSONFileFinder={
 	 * @param {Array} folders folders within this directory to search
 	 * @returns an {Array} of JSON files found, recursively
 	 */
-	findFilesInSubfolders:function(adir,folders){
-		var ret=[];
+	findFilesInSubfolders: function (adir, folders) {
+		var ret = [];
 
-		if (adir&&folders)
-			folders.forEach((afolder)=>
-				ret.push(...this.readDirContents(path.join(adir,afolder.name)))
+		if (adir && folders)
+			folders.forEach((afolder) =>
+				ret.push(...this.readDirContents(path.join(adir, afolder.name)))
 			);
 		return ret;
 	},
@@ -69,29 +73,29 @@ const JSONFileFinder={
 	* @param {Array} filesOrDirs files / directories to process.
 	* @returns this.
 	*/
-	init:function(filesOrDirs){ this._filesOrPaths=filesOrDirs; return this;},
+	init: function (filesOrDirs) { this._filesOrPaths = filesOrDirs; return this; },
 
 	/**
 * Find JSON files within the specified folder.
 * @param {string} searchDir the directory to process
 * @returns an {Array} of JSON files, if any.
 */
-	readDirContents:function(searchDir){
-		var ret=[],files2;
+	readDirContents: function (searchDir) {
+		var ret = [], files2;
 
-		if (searchDir&&fs.existsSync(searchDir)){
+		if (searchDir && fs.existsSync(searchDir)) {
 			// collect entries in this directory.
-			files2=fs.readdirSync(searchDir,{withFileTypes:true,recursive:true});
+			files2 = fs.readdirSync(searchDir, { withFileTypes: true, recursive: true });
 
 			// find files in all subfolders of this directory
 			ret.push(...this.findFilesInSubfolders(
 				searchDir,
-				files2.filter((aDirEnt)=>aDirEnt.isDirectory())));
+				files2.filter((aDirEnt) => aDirEnt.isDirectory())));
 
 			// find all files in this directory.
 			files2
-				.filter((aDirEnt)=>this.isJSONFile(aDirEnt))
-				.forEach((afile)=>ret.push(path.join(searchDir,afile.name)));
+				.filter((aDirEnt) => this.isJSONFile(aDirEnt))
+				.forEach((afile) => ret.push(path.join(searchDir, afile.name)));
 		}
 		return ret;
 	},
@@ -100,13 +104,13 @@ const JSONFileFinder={
 	 * @param {string} filename name of the file to evaluate
 	 * @returns a {boolean} values of <b>true</b> if we want it.
 	 */
-	isValidJSONFile:function(filename){
-		var ext,basename;
+	isValidJSONFile: function (filename) {
+		var ext, basename;
 
-		if (filename){
-			if ((ext=path.extname(filename))===EXTENSION){
-				basename=path.basename(filename,ext);
-				if (path.extname(basename)===SAVE_EXTENSION)
+		if (filename) {
+			if ((ext = path.extname(filename)) === EXTENSION) {
+				basename = path.basename(filename, ext);
+				if (path.extname(basename) === SAVE_EXTENSION)
 					return false; // it's already a backup filename
 				return true;
 			}
@@ -118,13 +122,13 @@ const JSONFileFinder={
 	 * @param {string} filename name of the file to evaluate
 	 * @returns a {boolean} values of <b>true</b> if we want it.
 	 */
-	isJSONFile:function(aDirEnt){
-		if (aDirEnt) return aDirEnt.isFile()&&this.isValidJSONFile(aDirEnt.name);
+	isJSONFile: function (aDirEnt) {
+		if (aDirEnt) return aDirEnt.isFile() && this.isValidJSONFile(aDirEnt.name);
 		return false;
 	}
 	// #endregion functions
 };
 
-module.exports={
+module.exports = {
 	JSONFileFinder
 };

@@ -8,13 +8,13 @@
  * description of DEBUG_PROP_NAME.
  * @constant {string} DEBUG_PROP_NAME
  */
-const DEBUG_PROP_NAME="debug";
+const DEBUG_PROP_NAME = "debug";
 
 /**
  * description of VERBOSE_PROP_NAME.
  * @constant {string} VERBOSE_PROP_NAME
  */
-const VERBOSE_PROP_NAME="verbose";
+const VERBOSE_PROP_NAME = "verbose";
 // #endregion properties
 
 // #region file extensions
@@ -22,17 +22,17 @@ const VERBOSE_PROP_NAME="verbose";
  * description of EXTENSION.
  * @constant {string} EXTENSION
  */
-const EXTENSION=".json";
+const EXTENSION = ".json";
 /**
  * description of SAVE_EXTENSION.
  * @constant {string} SAVE_EXTENSION
  */
-const SAVE_EXTENSION=".save";
+const SAVE_EXTENSION = ".save";
 // #endregion file extensions
 
 // #region exports
-module.exports.EXTENSION=EXTENSION;
-module.exports.SAVE_EXTENSION=SAVE_EXTENSION;
-module.exports.DEBUG_PROP_NAME=DEBUG_PROP_NAME;
-module.exports.VERBOSE_PROP_NAME=VERBOSE_PROP_NAME;
+module.exports.EXTENSION = EXTENSION;
+module.exports.SAVE_EXTENSION = SAVE_EXTENSION;
+module.exports.DEBUG_PROP_NAME = DEBUG_PROP_NAME;
+module.exports.VERBOSE_PROP_NAME = VERBOSE_PROP_NAME;
 // #endregion exports
