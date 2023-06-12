@@ -1,0 +1,48 @@
+{
+	"bookmarks.saveBookmarksInProject": true,
+	"bookmarks.showCommandsInContextMenu": false,
+	"bookmarks.sideBar.expanded": true,
+	"debug.javascript.autoAttachFilter": "disabled",
+	"editor.codeActionsOnSave": {
+		"source.fixAll": true,
+		"source.fixAll.eslint": true
+	},
+	"editor.codeLens": false,
+	"editor.comments.insertSpace": false,
+	"editor.detectIndentation": false,
+	"editor.formatOnSave": true,
+	"editor.insertSpaces": false,
+	"editor.minimap.enabled": false,
+	"editor.wordWrap": "on",
+	"eslint.packageManager": "yarn",
+	"eslint.validate": [
+		"javascript"
+	],
+	"explorer.confirmDelete": false,
+	"explorer.confirmDragAndDrop": false,
+	"files.eol": "\r\n",
+	"files.insertFinalNewline": true,
+	"files.trimFinalNewlines": true,
+	"git.confirmSync": false,
+	"git.openRepositoryInParentFolders": "never",
+	"gitlens.codeLens.authors.enabled": false,
+	"gitlens.codeLens.enabled": false,
+	"gitlens.codeLens.recentChange.enabled": false,
+	"gitlens.proxy": {},
+	"gitlens.showWelcomeOnInstall": false,
+	"gitlens.showWhatsNewAfterUpgrades": false,
+	"javascript.updateImportsOnFileMove.enabled": "always",
+	"npm.packageManager": "yarn",
+	"security.workspace.trust.untrustedFiles": "open",
+	"settingsSync.ignoredSettings": [
+		"editor.detectIndentation"
+	],
+	"terminal.integrated.cwd": "${workspaceFolder}",
+	"terminal.integrated.defaultProfile.windows": "Command Prompt",
+	"terminal.integrated.enableMultiLinePasteWarning": false,
+	"vsicons.projectDetection.autoReload": true,
+	"window.zoomLevel": 2,
+	"workbench.activityBar.visible": true,
+	"workbench.startupEditor": "none",
+	"workbench.welcomePage.walkthroughs.openOnInstall": false
+}

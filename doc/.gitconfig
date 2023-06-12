@@ -1,0 +1,19 @@
+# git config --global --list
+#
+# git config --global --add user.username rtcousens
+# git config --global --replace-all color.ui never
+# git config --global --unset color.ui
+[user]
+	name = rik cousens
+	email = rcousens@colt.com
+	username = rtcousens
+[core]
+	autocrlf = true
+	symlinks = false
+[push]
+	autoSetupRemote = true
+[difftool "sourcetree"]
+	cmd = "'' "
+[mergetool "sourcetree"]
+	cmd = "'' "
+	trustExitCode = true
