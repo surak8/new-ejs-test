@@ -3,26 +3,16 @@
 	"version": "1.0.1",
 	"main": "index.js",
 	"license": "MIT",
-	"dependencies": {
-		"ejs": "^3.1.9",
-		"fs": "^0.0.1-security",
-		"global": "^4.4.0",
-		"jsdoc": "^4.0.2",
-		"path": "^0.12.7",
-		"pino": "6.10.0",
-		"riktest": "^0.0.19"
-	},
-	"devDependencies": {
-		"eslint": "^8.42.0aa",
-		"json5": "^2.2.3"
-	},
+	"dependencies": {},
+	"devDependencies": {},
 	"scripts": {
 		"start": "node src/index.js",
 		"doc": "jsdoc src",
-		"clean": "yarn clean:0&&yarn clean:1&&yarn clean:2&&yarn clean:3",
+		"clean": "yarn clean:0&yarn clean:1&yarn clean:2&yarn clean:3&yarn clean:4",
 		"clean:0": "IF EXIST node_modules RD/Q/S node_modules",
 		"clean:1": "IF EXIST package-lock.json DEL /Q package-lock.json",
 		"clean:2": "IF EXIST yarn.lock DEL /Q yarn.lock",
-		"clean:3": "IF EXIST yarn-error.log DEL/Q yarn-error.log"
+		"clean:3": "IF EXIST yarn-error.log DEL/Q yarn-error.log",
+		"clean:4": "IF EXIST out RD /Q/S out"
 	}
 }

@@ -4,4 +4,13 @@
 	"editor.insertSpaces": false,
 	"editor.renderWhitespace": "none",
 	"merge-conflict.codeLens.enabled": false,
+	"files.eol": "\r\n",
+	//{
+	"editor.codeActionsOnSave": {
+		"source.fixAll.eslint": true
+	},
+	"eslint.validate": [
+		"javascript"
+	]
+	//}
 }

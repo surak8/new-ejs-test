@@ -1,0 +1,6 @@
+// create-class.ejs
+const <%=className %> = {
+	init: function() {
+		this.requiredConnectorNames=[<%connectorNames.forEach(function(aConnector) { %>"<%=aConnector%>",<%})%>];
+	}
+}
