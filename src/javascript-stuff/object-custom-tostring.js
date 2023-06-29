@@ -11,7 +11,9 @@ class Dog {
 /************************* */
 const theDog = new Dog("Gabby", "Lab", "chocolate", "female");
 
+// eslint-disable-next-line no-unused-vars
 var v1=theDog.toString(); // "[object Object]"
+// eslint-disable-next-line no-unused-vars
 var v2=`${theDog}`; // "[object Object]"
 
 /************************ */
