@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+	<font color="blue">
+		<h1 align="center">Outer function() with single inner function()</h1>
+	</font>
+	<script type="text/javascript">
+		function getAge(name, age) {
+			document.write(name + " age is :" + age + " years" + "<br>");
+		}
+		function getName(name, age) {
+			document.write("I am :" + name + "<br>");//document.write() prints output in a browser
+			getAge(name, age);
+		}
+		getName("Amardeep", 26);
+		getName("Paramesh", 24);
+		getName("Jyothi", 25);
+	</script>
+</body>
+
+</html>

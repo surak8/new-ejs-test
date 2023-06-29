@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+	<font color="blue">
+		<h1 align="center">Outer function() with single inner function()</h1>
+	</font>
+	<script>
+		function triangleHypotenuse(base, height) {
+			function square(side) {
+				return side * side;
+			}
+			return Math.sqrt(square(base) + square(height));
+		}
+		document.write("Hypotenuse of triangle is :" + triangleHypotenuse(3, 4));
+	</script>
+</body>
+
+</html>

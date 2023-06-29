@@ -1,0 +1,20 @@
+// example-4.html
+<!DOCTYPE html>
+<html>
+
+<body>
+	<font color="blue">
+		<h1 align="center">Anonymous inner function() with outer function()</h1>
+	</font>
+	<script>
+		function addSum(a) {
+			return function (b) {
+				return a + b;
+			};
+		}
+		var out = addSum(5);
+		document.write(out(3));
+	</script>
+</body>
+
+</html>
