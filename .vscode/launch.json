@@ -12,10 +12,17 @@
 				"<node_internals>/**"
 			],
 			"type": "node",
+			"env": {
+				"RIK_DEBUG": "true"
+			},
 			"args": [
-				//"input",
+				"input",
 				"input/riktest",
-				"input/test1.json"
+				"input/test1.json",
+				"hostname=${ENV:COMPUTERNAME}",
+				"local_temp=${ENV:SystemDrive}/temp",
+				"multi=user:${ENV:USERNAME},session:${ENV:SESSIONNAME}",
+				"something/${ENV:RIK_DEBUG}"
 			]
 		},
 		{
